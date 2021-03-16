@@ -16,7 +16,7 @@ const CharactersOverview:React.FunctionComponent<ReduxProps> = ({loadAllCharacte
 
   useEffect(() => {
     loadAllCharacters();
-  }, []);
+  }, [loadAllCharacters]);
 
   const handleCardClick = (id: string) => {
     toggleExpandedCard(expandedCard === id ? "" : id)

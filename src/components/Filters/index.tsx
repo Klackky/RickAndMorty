@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from "react";
+import React, { useState, useCallback } from "react";
 import { statuses as statusType } from "../../constants"
 import { statuses } from "./helpers";
 import connect, { ReduxProps } from "./connect";
@@ -23,7 +23,7 @@ const Filters:React.FunctionComponent<ReduxProps> = ({ createFilters }) => {
         checked={!filterSelected || filterSelected === statusType.any}
       />
 		  <label className="filter__label" htmlFor={statusType.any}> Any </label>
-      {useMemo(() => statuses.map(status => (
+      {statuses.map(status => (
         <React.Fragment key={status}>
           <input 
             type="radio" 
@@ -34,7 +34,7 @@ const Filters:React.FunctionComponent<ReduxProps> = ({ createFilters }) => {
           />
           <label className="filter__label" htmlFor={status}>{status}</label>
         </React.Fragment>
-      )),[statuses])};
+      ))};
     </div>
   );
 };
