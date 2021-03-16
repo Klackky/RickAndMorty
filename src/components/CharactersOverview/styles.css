@@ -1,0 +1,14 @@
+.characters-overview {
+  width: 100%;
+  background: #121212 ;
+  height: 100%;
+}
+
+@media screen and (min-width: 1200px) {
+  .characters-overview__search {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0 24px;
+  }
+}
