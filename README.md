@@ -1,5 +1,7 @@
 # Rick and Morty 
 
+Published at [Rick and Morty](https://find-rick-and-morty.netlify.app)
+
 ## Available Scripts
 In the project directory, you can run:
 To start this project locally please run *yarn install*,  *yarn start*
