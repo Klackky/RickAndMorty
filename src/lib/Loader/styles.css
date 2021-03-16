@@ -1,0 +1,30 @@
+.loader {
+  width: 100%;
+  height: calc(100% - 413px);
+  background-color: #121212;
+}
+
+.loader__title {
+  color: #E7E0DB;
+  margin-bottom: 16px;
+  line-height: 32px;
+}
+
+.loader__image {
+  width: 200px;
+  height: auto;
+}
+
+@media only screen and (min-width: 600px) {
+  .loader__image {
+    width: 220px ;
+    height: auto;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .loader__image {
+    width: 240px;
+    height: auto;
+  }
+}

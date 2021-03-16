@@ -7,11 +7,12 @@ import Search from "../Search";
 import Filters from "../Filters";
 import List from "../../lib/List";
 import CharacterCard from "../../lib/CharacterCard";
+import Loader from "../../lib/Loader";
 import NotFound from "../../lib/NotFound";
 import connect, { ReduxProps } from "./connect";
 import "./styles.css";
 
-const CharactersOverview:React.FunctionComponent<ReduxProps> = ({loadAllCharacters, characters, isNotFoundError }) => {
+const CharactersOverview:React.FunctionComponent<ReduxProps> = ({loadAllCharacters, characters, isNotFoundError, isLoading }) => {
   const [expandedCard, toggleExpandedCard] = useState("")
 
   useEffect(() => {
@@ -22,6 +23,23 @@ const CharactersOverview:React.FunctionComponent<ReduxProps> = ({loadAllCharacte
     toggleExpandedCard(expandedCard === id ? "" : id)
   }
 
+  const renderContent = () => {
+    if(isNotFoundError || (!isLoading && !characters.length)) return <NotFound />
+    if(isLoading && !characters.length) return <Loader />
+    return (
+      <List limit={characters.length}>
+      {characters.map((character: Character, idx: number) => (
+        <CharacterCard
+          onClick={() => handleCardClick(character.id)}
+          key={`${character.id}_${idx}`}
+          isExpanded={expandedCard === character.id}
+          {...character}
+        />
+      ))}
+    </List>
+    )
+  }
+
   return (
     <div className="characters-overview">
       <Header />
@@ -29,18 +47,7 @@ const CharactersOverview:React.FunctionComponent<ReduxProps> = ({loadAllCharacte
         <Search />
         <Filters />
       </div>
-      {isNotFoundError || !characters.length ? <NotFound /> : (
-        <List limit={characters.length}>
-          {characters.map((character: Character, idx: number) => (
-            <CharacterCard
-              onClick={() => handleCardClick(character.id)}
-              key={`${character.id}_${idx}`}
-              isExpanded={expandedCard === character.id}
-              {...character}
-            />
-          ))}
-        </List>
-      )}
+      {renderContent()}
     </div>
   );
 }
