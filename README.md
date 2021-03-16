@@ -1,6 +1,6 @@
 # Rick and Morty 
 
-Published at [Rick and Morty](#find-rick-and-morty.netlify.app)
+Published at [Rick and Morty](find-rick-and-morty.netlify.app)
 
 ## Available Scripts
 In the project directory, you can run:
